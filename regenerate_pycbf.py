@@ -114,7 +114,7 @@ def check_tool(
         output = subprocess.check_output(
             [name] + version_args, stderr=subprocess.STDOUT, encoding="utf-8"
         )
-    except FileNotFoundError:
+    except (FileNotFoundError, PermissionError):
         print("FAIL")
         return False
     except subprocess.CalledProcessError:
